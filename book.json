@@ -1,0 +1,92 @@
+﻿{
+  "gitbook": ">=3.2.0",
+  "title": "Istio 运维实战",
+  "description": "Istio 运维实战",
+  "language": "zh-hans",
+  "author": "Aeraki Authors",
+  "extension": null,
+  "generator": "site",
+  "links" : {
+    "sidebar" : {
+        "Aeraki Framework": "https://github.com/aeraki-framework"
+    }
+  },
+  "structure" : {
+    },
+  "plugins": [
+        "github",
+        "codesnippet",
+        "splitter",
+        "page-toc-button",
+        "image-captions",
+        "editlink",
+        "back-to-top-button",
+        "-lunr", "-search", "search-plus",
+        "github-buttons@2.1.0",
+        "favicon@^0.0.2",
+        "tbfed-pagefooter@^0.0.1",
+        "3-ba",
+        "theme-default",
+        "-highlight", "prism", "prism-themes",
+        "lightbox",
+        "ga"
+  ],
+  "pluginsConfig": {
+    "theme-default": {
+            "showLevel": true
+        },
+        "github": {
+            "url": "https://github.com/aeraki-framework/istio-operation-bible"
+        },
+		"editlink": {
+            "base": "https://github.com/aeraki-framework/istio-operation-bible/edit/master",
+            "label": "编辑本页"
+        },
+        "image-captions": {
+            "caption": "图片 - _CAPTION_"
+        },
+        "github-buttons": {
+            "repo": "aeraki-framework/istio-operation-bible",
+            "types": ["star"],
+            "size": "small"
+        },
+        "tbfed-pagefooter": {
+		    "copyright": "Copyright © Aeraki Framework 2021",
+            "modify_label": " Updated at ",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        },
+        "favicon": {
+            "shortcut": "favicon.ico",
+            "bookmark": "favicon.ico"
+        },
+        "3-ba": {
+            "token": ""
+        },
+        "prism": {
+            "css": [
+            "prism-themes/themes/prism-ghcolors.css"
+            ]
+        },
+        "sitemap-general": {
+            "prefix": "https://aeraki-framework.com/istio-operation-bible/"
+        },
+        "ga": {
+            "token": ""
+        },
+        "disqus": {
+            "shortName": "istio-operation-bible"
+        },
+        "gittalk": {
+            "clientID": "",
+            "clientSecret": "",
+            "repo": "aeraki-framework/istio-operation-bible",
+            "owner": "zhaohuabing",
+            "admin": ["zhaohuabing"],
+            "distractionFreeMode": false 
+        }
+  },
+  "title": "Istio 运维实战",
+  "variables": {
+    "home": "https://aeraki-framework.com/istio-operation-bible"
+  }
+}
