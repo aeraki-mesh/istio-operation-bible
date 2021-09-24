@@ -15,10 +15,6 @@ all: install build
 serve:
 	gitbook serve . $(BOOK_OUTPUT)
 
-.PHONY: deploy
-deploy:
-	cp -r _book docs
-
 .PHONY: epub
 epub:
 	gitbook epub . $(BOOK_NAME).epub
@@ -42,7 +38,6 @@ help:
 	@echo "make build    - Build the book"
 	@echo "make serve    - Serving the book on localhost:4000"
 	@echo "make install  - Install gitbook and plugins"
-	@echo "make deploy   - Deploy generated book to github page
 	@echo "make epub     - Build epub book"
 	@echo "make pdf      - Build pdf book"
 	@echo "make clean    - Remove generated files"
