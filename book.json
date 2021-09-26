@@ -29,8 +29,7 @@
         "theme-default",
         "-highlight", "prism", "prism-themes",
         "lightbox",
-        "ga",
-        "gittalk"
+        "ga"
   ],
   "pluginsConfig": {
     "theme-default": {
@@ -78,8 +77,8 @@
             "shortName": "istio-operation-bible"
         },
         "gittalk": {
-            "clientID": "620fa01c7bf3a86fe4b8",
-            "clientSecret": "8c0f76cae172ea423ea8e68c782078a13406822a",
+            "clientID": "0d2050a85b8acdc92779",
+            "clientSecret": "",
             "repo": "aeraki-framework/istio-operation-bible",
             "owner": "zhaohuabing",
             "admin": ["zhaohuabing"],
