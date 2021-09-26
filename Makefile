@@ -16,7 +16,7 @@ serve:
 	gitbook serve . $(BOOK_OUTPUT)
 
 .PHONY: deploy
-deploy:
+deploy: build
 	cp -r _book docs
 
 .PHONY: epub
