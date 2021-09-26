@@ -8,7 +8,8 @@ install:
 
 build:
 	gitbook build . $(BOOK_OUTPUT)
-	cp -r _book docs
+	rm -rf docs
+	cp -rf _book docs
 
 all: install build
 
