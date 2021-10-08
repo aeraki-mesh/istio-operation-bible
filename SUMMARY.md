@@ -1,5 +1,6 @@
 
 * [Istio 调试指南](content/debug-istio/README.md)
+  * [数据面 Envoy 日志调试指南](content/debug-istio/debug-with-envoy-log.md)
 * [Istio 常见问题](content/common-problem/README.md)
   * [应用程序启动失败/启动时无法访问网络](content/common-problem/application-start-fail.md)
 * [Istio 最佳实践](content/best-practice/README.md)
