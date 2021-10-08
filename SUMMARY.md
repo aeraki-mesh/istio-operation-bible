@@ -1,7 +1,9 @@
-# Summary
+
 * [Istio 调试指南](content/debug-istio/README.md)
 * [Istio 常见问题](content/common-problem/README.md)
+  * [应用程序启动失败/启动时无法访问网络](content/common-problem/application-start-fail.md)
 * [Istio 最佳实践](content/best-practice/README.md)
+  * [Sidecar 初始化完成后再启动应用程序](content/best-practice/startup-dependence.md) 
   * [在 Istio 中实现方法级调用跟踪](content/best-practice/method-level-tracing.md)
   * [在 Istio 中实现异步消息调用跟踪](content/best-practice/async-message-tracing.md)
 * [腾讯云服务网格 TCM](content/tcm/README.md)
