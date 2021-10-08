@@ -5,8 +5,8 @@ BOOK_OUTPUT := _book
 install:
 	npm install gitbook-cli -g
 build:
-	gitbook build . $(BOOK_OUTPUT)
 	rm -rf docs
+	gitbook build . $(BOOK_OUTPUT)
 	cp -rf _book docs
 
 all: install build
