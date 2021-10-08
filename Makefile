@@ -4,8 +4,6 @@ BOOK_OUTPUT := _book
 .PHONY: install build all
 install:
 	npm install gitbook-cli -g
-	gitbook install
-
 build:
 	gitbook build . $(BOOK_OUTPUT)
 	rm -rf docs
