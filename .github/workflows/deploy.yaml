@@ -1,0 +1,32 @@
+---
+name: deploy
+on: [push]
+jobs:
+  deploy:
+    name: deploy github pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.  
+      - name: Install nodejs 12
+        run: |
+          sudo apt remove nodejs -y
+          sudo npm cache clean -f
+          sudo npm install -g n
+          sudo n stable
+          sudo n 12.18.2
+      - name: Build
+        run: make all
+      - name: Commit
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -m "Publish github pages" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
