@@ -2,24 +2,24 @@
 
 ## 问题背景
 
-Envoy 缺省会把 http header 的 key 转换为小写，例如有一个 http header Test-Upper-Case-Header: some-value，经过 envoy 代理后会变成 test-upper-case-header: some-value。这个在正常情况下没问题，RFC 2616 规范也说明了处理 HTTP Header 应该是大小写不敏感的。
+Envoy 缺省会把 HTTP Header 的 key 转换为小写，例如有一个 HTTP Header Test-Upper-Case-Header: some-value，经过 Envoy 代理后会变成 test-upper-case-header: some-value。这个在正常情况下没问题，RFC 2616 规范也说明了处理 HTTP Header 应该是大小写不敏感的。
 
-部分场景下，业务请求对某些header字段有大小写要求，此时被Envoy转换成为小些会导致请求出现问题。
+部分场景下，业务请求对某些 Header 字段有大小写要求，此时被 Envoy 转换成为小些会导致请求出现问题。
 
 ## 解决方案
 
-Envoy支持几种不同的Header规则：
+Envoy 支持几种不同的 Header 规则：
 - 全小写（默认规则）
 - 首字母大写
 
-Envoy 1.8之后新增支持：
+Envoy 1.8 之后新增支持：
 - 保留请求原本样式
 
-基于以上能力，为了解决header默认改为小写的问题在istio 1.8及之前可配置成为首字母大写形式，istio 1.10及以后可以配置保留header原有样式。
+基于以上能力，为了解决 Header 默认改为小写的问题在 Istio 1.8 及之前可配置成为首字母大写形式，Istio 1.10 及以后可以配置保留 Header 原有样式。
 
 ## 配置方法
 
-istio 1.8之前可添加如下EnvoyFilter配置：
+Istio 1.8 之前可添加如下 EnvoyFilter 配置：
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
@@ -41,9 +41,9 @@ spec:
             header_key_format:
               proper_case_words: {}
 ```
-在需要依赖大写header的服务对应的集群中添加规则，将header全部转为首字母大写的形式。
+在需要依赖大写 Header 的服务对应的集群中添加规则，将 Header 全部转为首字母大写的形式。
 
-istio 1.10及之后可以添加如下EnvoyFilter配置：
+Istio 1.10 及之后可以添加如下 EnvoyFilter 配置：
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
@@ -71,4 +71,4 @@ spec:
                typed_config:
                  "@type": type.googleapis.com/envoy.extensions.http.header_formatters.preserve_case.v3.PreserveCaseFormatterConfig
 ```
-通过此配置可以让Enovy保持header原有大小写形式
+通过此配置可以让 Enovy 保持 Header 原有大小写形式。
