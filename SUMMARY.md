@@ -7,4 +7,5 @@
   * [Sidecar 初始化完成后再启动应用程序](content/best-practice/startup-dependence.md) 
   * [在 Istio 中实现方法级调用跟踪](content/best-practice/method-level-tracing.md)
   * [在 Istio 中实现异步消息调用跟踪](content/best-practice/async-message-tracing.md)
+  * [在 Istio 中指定 HTTP Header 大小写](content/best-practice/http-header-case.md)
 * [腾讯云服务网格 TCM](content/tcm/README.md)
