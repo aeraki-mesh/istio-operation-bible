@@ -8,12 +8,14 @@ Envoy 缺省会把 http header 的 key 转换为小写，例如有一个 http he
 
 ## 解决方案
 
-Envoy支持集中不同的Header规则：
+Envoy支持几种不同的Header规则：
 - 全小写（默认规则）
 - 首字母大写
+
 Envoy 1.8之后新增支持：
 - 保留请求原本样式
-基于以上能力，为了解决header改为小写的问题在istio 1.8及之前可配置成为首字母大写形式，istio 1.10及以后可以配置保留header原有样式。
+
+基于以上能力，为了解决header默认改为小写的问题在istio 1.8及之前可配置成为首字母大写形式，istio 1.10及以后可以配置保留header原有样式。
 
 ## 配置方法
 
@@ -39,7 +41,7 @@ spec:
             header_key_format:
               proper_case_words: {}
 ```
-在需要依赖大写header的服务对应的集群中添加规则，讲header全部转为首字母大写的形式。
+在需要依赖大写header的服务对应的集群中添加规则，将header全部转为首字母大写的形式。
 
 istio 1.10及之后可以添加如下EnvoyFilter配置：
 ```yaml
