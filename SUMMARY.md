@@ -3,6 +3,7 @@
   * [数据面 Envoy 日志调试指南](content/debug-istio/debug-with-envoy-log.md)
 * [Istio 常见问题](content/common-problem/README.md)
   * [应用程序启动失败/启动时无法访问网络](content/common-problem/application-start-fail.md)
+  * [ExternalName Service 劫持了其他服务流量](content/common-problem/external-name-service-highjacks.md)
 * [Istio 最佳实践](content/best-practice/README.md)
   * [Sidecar 初始化完成后再启动应用程序](content/best-practice/startup-dependence.md) 
   * [在 Istio 中实现方法级调用跟踪](content/best-practice/method-level-tracing.md)
