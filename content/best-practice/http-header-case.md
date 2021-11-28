@@ -32,7 +32,7 @@ spec:
       match:
         context: SIDECAR_OUTBOUND
         cluster:
-          # 集群名称可通过ConfigDump查询
+          # 集群名称可通过 ConfigDump 查询
           name: "outbound|3000||test2.default.svc.cluster.local"
       patch:
         operation: MERGE
@@ -71,4 +71,4 @@ spec:
                typed_config:
                  "@type": type.googleapis.com/envoy.extensions.http.header_formatters.preserve_case.v3.PreserveCaseFormatterConfig
 ```
-通过此配置可以让 Enovy 保持 Header 原有大小写形式。
+通过此配置可以让 Envoy 保持 Header 原有大小写形式。

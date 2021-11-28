@@ -8,7 +8,7 @@
 
 ### 正常情况
 
-在 namespace sample 安装 sleep pod：
+在 namespace sample 安装 sleep Pod：
 
 ```
 kubectl create ns sample
@@ -24,7 +24,7 @@ HTTP/2 200
 ......
 ```
 
-从 access log 确认流量是从PassthroughCluster 出去，符合预期：
+从 access log 确认流量是从 PassthroughCluster 出去，符合预期：
 
 ```
 "- - -" 0 - - - "-" 938 5606 1169 - "-" "-" "-" "-" "18.232.227.86:443" PassthroughCluster 172.24.0.10:42434 18.232.227.86:443 172.24.0.10:42432 - -
@@ -64,7 +64,7 @@ More details here: https://curl.se/docs/sslcerts.html
 
 ## 故障原因
 
-通过对比 sleep pod 前后两次的 xDS， 发现增加了 ExternalName Service 后，xDS 里会多一个 LDS `0.0.0.0_443`, 该 LDS 包括一个`default_filter_chain` 会把该 LDS 中其他filter chain 没有match 到的流量，都路由到这个`default_filter_chain` 中的cluster，也就是 `my-externalname` 对应的 CDS:
+通过对比 sleep Pod 前后两次的 xDS， 发现增加了 ExternalName Service 后，xDS 里会多一个 LDS `0.0.0.0_443`, 该 LDS 包括一个`default_filter_chain` 会把该 LDS 中其他 filter chain 没有 match 到的流量，都路由到这个 `default_filter_chain` 中的 Cluster，也就是 `my-externalname` 对应的 CDS:
 
 
 ![](image/externalname.png)
@@ -72,6 +72,6 @@ More details here: https://curl.se/docs/sslcerts.html
 
 ## 解决方案
 
-该问题属于 istio 实现缺陷，相关 issue： https://github.com/istio/istio/issues/20703
+该问题属于 Istio 实现缺陷，相关 issue： https://github.com/istio/istio/issues/20703
 
 目前的解决方案是避免 ExternalName Service 和其他服务端口冲突。
