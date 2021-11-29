@@ -1,4 +1,4 @@
-# Gateway TLS hosts 冲突导致配置未生效
+# Gateway TLS hosts 冲突导致配置被拒绝
 
 ## 故障现象
 网格中同时存在以下两个 Gateway
