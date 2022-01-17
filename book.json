@@ -8,7 +8,7 @@
   "generator": "site",
   "links" : {
     "sidebar" : {
-        "Aeraki Framework": "https://github.com/aeraki-framework"
+        "Aeraki Framework": "https://github.com/aeraki-mesh/aeraki"
     }
   },
   "structure" : {
