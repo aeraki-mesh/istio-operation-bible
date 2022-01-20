@@ -8,7 +8,7 @@
   "generator": "site",
   "links" : {
     "sidebar" : {
-        "Aeraki Framework": "https://github.com/aeraki-mesh/aeraki"
+        "Aeraki Framework": "https://github.com/aeraki-mesh"
     }
   },
   "structure" : {
@@ -36,17 +36,17 @@
             "showLevel": true
         },
         "github": {
-            "url": "https://github.com/aeraki-framework/istio-operation-bible"
+            "url": "https://github.com/aeraki-mesh/istio-operation-bible"
         },
 		"editlink": {
-            "base": "https://github.com/aeraki-framework/istio-operation-bible/edit/master",
+            "base": "https://github.com/aeraki-mesh/istio-operation-bible/edit/master",
             "label": "编辑本页"
         },
         "image-captions": {
             "caption": "图片 - _CAPTION_"
         },
         "github-buttons": {
-            "repo": "aeraki-framework/istio-operation-bible",
+            "repo": "aeraki-mesh/istio-operation-bible",
             "types": ["star"],
             "size": "small"
         },
@@ -68,7 +68,7 @@
             ]
         },
         "sitemap-general": {
-            "prefix": "https://aeraki-framework.com/istio-operation-bible/"
+            "prefix": "https://istio-operation-bible.aeraki.net"
         },
         "ga": {
             "token": ""
@@ -79,7 +79,7 @@
         "gittalk": {
             "clientID": "0d2050a85b8acdc92779",
             "clientSecret": "",
-            "repo": "aeraki-framework/istio-operation-bible",
+            "repo": "aeraki-mesh/istio-operation-bible",
             "owner": "zhaohuabing",
             "admin": ["zhaohuabing"],
             "distractionFreeMode": false 
@@ -87,6 +87,6 @@
   },
   "title": "Istio 运维实战",
   "variables": {
-    "home": "https://aeraki-framework.com/istio-operation-bible"
+    "home": "https://istio-operation-bible.aeraki.net"
   }
 }
