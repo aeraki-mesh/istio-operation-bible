@@ -42,7 +42,7 @@ Welcome to the MariaDB monitor.  Commands end with ; or \g.
 
 我们再尝试对 mysql-ip-1 复现故障：在网格内创建了一个包括 3306 端口的 http 服务，mysql 请求无响应，问题复现。
 
-另外我们还尝试过，如果把同步服务的协议定义为 tcp（通过 port name），该问题不存在：
+另外我们还尝试过，如果把冲突端口的协议定义为 tcp（通过 port name），该问题不存在：
 
 ```
 apiVersion: v1
