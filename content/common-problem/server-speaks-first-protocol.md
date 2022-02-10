@@ -5,10 +5,10 @@
 Istio 网格开启 allow any 访问模式，在一个注入了 sidecar 的 pod 内，mysql 客户端访问 mysql-ip-1:3306 成功，访问 mysql-ip-2:10000 没有响应：
 
 ```
-# mysql -h11.135.153.1 -utest -pxxxx -P3306
+# mysql -h55.135.153.1 -utest -pxxxx -P3306
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 
-# mysql -h100.108.108.2 -utest -pxxxx -P10000
+# mysql -h55.108.108.2 -utest -pxxxx -P10000
 (no response)
 ```
 
@@ -16,7 +16,7 @@ Welcome to the MariaDB monitor.  Commands end with ; or \g.
 
 查看日志，把 access log 设置为 debug、trace 均没有发现有用信息。
 
-分析发现，网格内有一个 http server，也使用了和 mysql-ip-b 相同的端口 10000：
+分析发现，网格内有一个 http server，也使用了和 mysql-ip-2 相同的端口 10000：
 
 ```
 apiVersion: v1
@@ -33,10 +33,10 @@ spec:
     targetPort: 8080
 ```
 
-我们尝试把该服务端口改成 10001，访问 mysql-ip-b:10000 成功，推测和端口冲突相关:
+我们尝试把该服务端口改成 10001，访问 mysql-ip-2:10000 成功，推测和端口冲突相关:
 
 ```
-# mysql -h100.108.108.2 -utest -pxxxx -P10000
+# mysql -h55.108.108.2 -utest -pxxxx -P10000
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 ```
 
@@ -67,7 +67,7 @@ Mysql 协议是一种 **Server Speaks First** 协议，也就是说 client 和 s
 
 ```
 S: 服务端首先会发一个握手包到客户端
-C: 客户端向服务端发送认证信息 ( 用户名，密码等 ) 
+C: 客户端向服务端发送认证信息 ( 用户名，密码等 )
 S: 服务端收到认证包后，会检查用户名与密码是否合法，并发送包告知客户端认证信息。
 ```
 
@@ -104,7 +104,7 @@ S: 221 Bye
 
 ### istio 不是完全透明
 
-而当前 istio 实现的某些特性，对 Server Speaks First 协议不能做到**透明**兼容，这些特性包括：
+当前 istio 的某些特性，不能做到**透明**兼容 Server Speaks First 协议，这些特性包括：
 
 * 协议嗅探
 * PERMISSIVE mTLS
@@ -112,14 +112,14 @@ S: 221 Bye
 
 这些特性都希望 client 能先发起会话，以协议嗅探为例，envoy 是通过分析 client 发出的初始若干字节来推测协议类型。
 
-对于 Server Speaks First 协议比如 mysql，三次握手后，这时候 mysql client 在等待 mysql server 发起初次会话，而 client 端的 envoy 尝试做流量拦截，也在等 mysql client 发出数据，这类似一个死锁，最终超时。
+对于 Server Speaks First 协议，比如 mysql，三次握手后，这时候 mysql client 在等待 mysql server 发起初次会话，而 client 端的 envoy 尝试做协议嗅探，也在等 mysql client 发出数据，这类似一个死锁，最终超时。
 
 
 ## 解决方案
 
 以下是一些可行的方案：
 
-1. 为 Server Speaks First 协议服务创建一个 ServiceEntry，并指定协议为 TCP
+1. 为 Server Speaks First 协议服务创建一个 ServiceEntry，并指定协议为 TCP。
 2. 避免 Server Speaks First 协议服务端口和网格内服务端口重叠，这样请求可以直接走 passthrough。
 3. 把 Server Speaks First 服务 ip 放到 excludeIPRanges，这样请求不经过 envoy 处理，适用于 DB 服务不需要网格治理的情况。
 
