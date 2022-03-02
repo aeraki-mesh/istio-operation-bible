@@ -52,23 +52,41 @@ metadata:
   namespace: istio-system
 spec:
   configPatches:
+  # 配置保留发向 upstream 的 request header 大小写
+  - applyTo: CLUSTER
+    patch:
+      operation: MERGE
+      value:
+        typed_extension_protocol_options:
+          envoy.extensions.upstreams.http.v3.HttpProtocolOptions:
+            '@type': type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions
+            use_downstream_protocol_config:
+              http_protocol_options:
+                header_key_format:
+                  stateful_formatter:
+                    name: preserve_case
+                    typed_config:
+                      '@type': type.googleapis.com/envoy.extensions.http.header_formatters.preserve_case.v3.PreserveCaseFormatterConfig
+  # 配置保留收到的 response header 大小写
   - applyTo: NETWORK_FILTER
     match:
       listener:
         filterChain:
           filter:
-            name: "envoy.http_connection_manager"
+            name: envoy.filters.network.http_connection_manager
     patch:
       operation: MERGE
       value:
-        name: "envoy.http_connection_manager"
         typed_config:
-          "@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager"
+          '@type': type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
           http_protocol_options:
             header_key_format:
-             stateful_formatter:
-               name: preserve_case
-               typed_config:
-                 "@type": type.googleapis.com/envoy.extensions.http.header_formatters.preserve_case.v3.PreserveCaseFormatterConfig
+              stateful_formatter:
+                name: preserve_case
+                typed_config:
+                  '@type': type.googleapis.com/envoy.extensions.http.header_formatters.preserve_case.v3.PreserveCaseFormatterConfig
+
 ```
 通过此配置可以让 Envoy 保持 Header 原有大小写形式。
+
+Envoy 文档中对此的说明： https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/header_casing#config-http-conn-man-header-casing
