@@ -241,7 +241,7 @@ spec:
 
 在 ingress gateway 上 ss, 显示 443 上连接都开启了 keepalive: 
 
-![client sidecar 开启 keepalive](image/tcp-keepalive-ss-4.png)
+![ingress gateway 开启 keepalive](image/tcp-keepalive-ss-5.png)
 
 如果用户 client 较多不便调整，更适合在 server （ingress gateway）开启 keepalive。另外该方案对 client 有无 sidecar 没有要求。
 
