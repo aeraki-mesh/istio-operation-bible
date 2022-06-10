@@ -21,10 +21,7 @@ jobs:
           sudo apt remove nodejs -y
           sudo npm cache clean -f
           sudo npm install -g n
-          sudo n latest
-          sudo npm install -g npm
-          sudo hash -d npm
-          sudo npm i      
+          sudo n latest      
       - name: Build
         run: make all
       - name: Commit
