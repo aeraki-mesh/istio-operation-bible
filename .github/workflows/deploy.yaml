@@ -15,7 +15,16 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '10.14.1'
+          node-version: '12.18.2'
+      - name: update npm
+        run: |
+          sudo apt remove nodejs -y
+          sudo npm cache clean -f
+          sudo npm install -g n
+          sudo n latest
+          sudo npm install -g npm
+          sudo hash -d npm
+          sudo npm i      
       - name: Build
         run: make all
       - name: Commit
