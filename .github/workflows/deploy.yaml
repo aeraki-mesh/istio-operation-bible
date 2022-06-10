@@ -16,9 +16,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16.15.1'
-      - run: npm ci
-      - run: npm run build --if-present
-      - run: npm test
       - name: Build
         run: make all
       - name: Commit
