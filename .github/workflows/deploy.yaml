@@ -12,13 +12,13 @@ jobs:
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
           fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.  
           node-version: 14.x
-      - name: Install nodejs 12
-        run: |
-          sudo apt remove nodejs -y
-          sudo npm cache clean -f
-          sudo npm install -g n
-          sudo n stable
-          sudo n 12.18.2
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.15.1'
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm test
       - name: Build
         run: make all
       - name: Commit
