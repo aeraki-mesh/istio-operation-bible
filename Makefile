@@ -3,7 +3,7 @@ BOOK_OUTPUT := _book
 
 .PHONY: install build all
 install:
-        npm install -g npm@latest
+	npm install -g npm@latest
 	npm install gitbook-cli@2.3.2  -g
 	gitbook install
 build:
