@@ -18,7 +18,6 @@ jobs:
           sudo npm cache clean -f
           sudo npm install -g npm
           sudo npm --versione
-          sudo npm list -g --depth 0
       - name: Build
         run: make all
       - name: Commit
