@@ -1,5 +1,5 @@
-_book
+/public
+resources/
+node_modules/
 package-lock.json
-package.json
-node_modules
-.idea
+.hugo_build.lock

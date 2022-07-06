@@ -1,0 +1,24 @@
+{
+  "name": "learning-envoy",
+  "version": "0.0.1",
+  "description": "Envoy 学习笔记.",
+  "main": "none.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhaohuabing/learning-envoy.git"
+  },
+  "author": "Huabing Zhao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhaohuabing/learning-envoy/issues"
+  },
+  "homepage": "http://zhaohuabing.com/learning-envoy",
+  "devDependencies": {
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.3.7",
+    "postcss-cli": "^9.0.2"
+  }
+}

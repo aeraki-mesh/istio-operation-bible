@@ -1,1 +1,0 @@
-TCM（Tencent Cloud Mesh）是腾讯云上提供的基于 Istio 进行增强，和 Istio API 完全兼容的 Service Mesh 托管服务，可以帮助用户以较小的迁移成本和维护代价快速利用到 Service Mesh 提供的流量管理和服务治理能力。
